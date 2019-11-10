@@ -3,18 +3,28 @@
   template.innerHTML = `
 		<style>
 		:host {
-			border-radius: 25px;
-			border-width: 4px;
+			
 			border-color: black;
 			border-style: solid;
 			display: block;
 		} 
     </style> 
-    <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-  <rect width="10" height="10">
-    <animate attributeName="rx" values="0;5;0" dur="10s" repeatCount="indefinite" />
-  </rect>
+     
+    <svg width="" height="120" viewBox="0 0 120 120"
+     xmlns="http://www.w3.org/2000/svg">
+
+    <polygon points="60,30 90,90 30,90">
+        <animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="rotate"
+                          from="0 60 70"
+                          to="360 60 70"
+                          dur="10s"
+                          repeatCount="indefinite"/>
+    </polygon>
 </svg>
+
+
 	`;
 
   class Box extends HTMLElement {
