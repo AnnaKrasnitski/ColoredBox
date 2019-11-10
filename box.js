@@ -68,10 +68,11 @@ p {
       this.addEventListener("click", event => {
         var event = new Event("onClick");
         this.dispatchEvent(event);
+        document.getElementsByClassName("gauge-text")= "50%";
       });
       this._props = {};
 
-      document.getElementsByClassName("gauge-text")= "50%"
+      
       
     }
 
