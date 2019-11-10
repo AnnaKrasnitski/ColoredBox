@@ -70,6 +70,9 @@ p {
         this.dispatchEvent(event);
       });
       this._props = {};
+
+      document.getElementsByClassName("gauge-text")= "50%"
+      
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
