@@ -2,14 +2,7 @@
   let template = document.createElement("template");
   template.innerHTML = `
 		<style>
-		:host {
-			
-			border-color: black;
-			border-style: solid;
-			display: block;
-    } 
-    
-
+	
     @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:100,400");
 $background-color: #0f2027;
 $accent-color: #b3ffab;
