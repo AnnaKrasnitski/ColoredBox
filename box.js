@@ -7,23 +7,63 @@
 			border-color: black;
 			border-style: solid;
 			display: block;
-		} 
+    } 
+    
+
+    @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:100,400");
+$background-color: #0f2027;
+$accent-color: #b3ffab;
+.gauge {
+	&-chart {
+		width: 20rem;
+	}
+	&-text {
+		text-anchor: middle;
+		fill: $accent-color;
+		font-weight: 400;
+		font-size: 75%;
+	}
+}
+
+html {
+	font-size: 1.5rem;
+}
+body {
+	background: $background-color;
+	color: $accent-color;
+	font-family: "Josefin Sans", sans-serif;
+	font-weight: 100;
+	display: flex;
+	align-items: center;
+}
+p {
+	text-align: center;
+}
+
+
+
     </style> 
      
-    <svg width="" height="120" viewBox="0 0 120 120"
-     xmlns="http://www.w3.org/2000/svg">
-
-    <polygon points="60,30 90,90 30,90">
-        <animateTransform attributeName="transform"
-                          attributeType="XML"
-                          type="rotate"
-                          from="0 60 70"
-                          to="360 60 70"
-                          dur="10s"
-                          repeatCount="indefinite"/>
-    </polygon>
-</svg>
-
+    <div class="gauge-chart">
+    <svg viewBox="0 0 80 40" class="gauge">
+      <circle class="donut-ring" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#d2d3d4" stroke-width="15"></circle>
+      <circle class="donut-segment" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#b3ffab" stroke-width="15" stroke-dasharray="65 135" stroke-dashoffset="-100">
+        <animate attributeType='XML' attributeName='stroke-dasharray' values='0 200; 20 180 ; 50 150; 65 135; 65 135;' keyTimes='0; 0.4; 0.6; 0.7; 1' dur='2.5s' repeatCount='1'>
+      </circle>
+      <text x="40" y="39.5" class="gauge-text">65%</text>
+    </svg>
+    <p>super gauge chart 2</p>
+  </div>
+  <div class="gauge-chart">
+    <svg viewBox="0 0 80 40" class="gauge">
+      <circle class="donut-ring" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#d2d3d4" stroke-width="15"></circle>
+      <circle class="donut-segment" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#b3ffab" stroke-width="15" stroke-dasharray="85 115" stroke-dashoffset="-100">
+        <animate attributeType='XML' attributeName='stroke-dashoffset' values='0; 0; -33; -100; -100;' keyTimes='0; 0.4; 0.6; 0.7; 1' dur='2.5s' repeatCount='1'>
+      </circle>
+      <text x="40" y="39.5" class="gauge-text">85%</text>
+    </svg>
+    <p>super gauge chart</p>
+  </div>
 
 	`;
 
