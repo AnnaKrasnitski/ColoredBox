@@ -35,7 +35,7 @@
 		"color": {
 			"type": "string",
 			"description": "Background color",
-			"default": "red"
+			"default": "'white'"
 		},
 		"opacity": {
 			"type": "number",
@@ -44,7 +44,7 @@
 		},
 		"width": {
 			"type": "integer",
-			"default": 100
+			"default": 300
 		},
 		"height": {
 			"type": "integer",
