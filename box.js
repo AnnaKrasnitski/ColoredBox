@@ -2,6 +2,8 @@
   let template = document.createElement("template");
   template.innerHTML = `
 		<style>
+	
+    @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:100,400");
     .large-header {
       position: relative;
       width: 100%;
@@ -53,6 +55,7 @@
       </div>
    </div>
 </div>
+  
 	`;
 
   class Box extends HTMLElement {
