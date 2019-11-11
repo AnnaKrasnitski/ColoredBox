@@ -58,6 +58,8 @@ p {
         this.dispatchEvent(event);
       });
       this._props = {};
+      var x = document.getElementsByClassName("gauge-text");
+      x[0].innerHTML = "666";
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
