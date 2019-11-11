@@ -2,107 +2,103 @@
   let template = document.createElement("template");
   template.innerHTML = `
 		<style>
-	
-    @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:100,400");
-$background-color: #0f2027;
-$accent-color: #b3ffab;
-.gauge {
-	&-chart {
-		width: 20rem;
-	}
-	&-text {
-		text-anchor: middle;
-		fill: $accent-color;
-		font-weight: 400;
-		font-size: 75%;
-	}
-}
+    * { margin:0; padding:0; }
 
-html {
-	font-size: 1.5rem;
-}
-body {
-	background: $background-color;
-	color: $accent-color;
-	font-family: "Josefin Sans", sans-serif;
-	font-weight: 100;
-	display: flex;
-	align-items: center;
-}
-p {
-	text-align: center;
-}
-
-
-
-
-$hover-bg: #7500D8;
-
-.center {
-  text-align:center;
-  padding: 100px;
-}
-
-body {
-  background-color: #eb484d;
-  color: #FFF;
-  font-size: 35px;
-  font-family: sans-serif;
-}
-
-.container {
-  position:relative;
-  display:inline-block;
-  padding: 10px;
-  
-  &:before {
-    position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height:100%;
-  background: $hover-bg;
-  z-index: -1;
-  content: '';
-  }
-  
-  &:hover::before {
-    animation: bg-animation 0.6s 1;
-  animation-fill-mode: forwards;
-  }
-}
-
-@keyframes bg-animation {
-  0% {
-    width: 10%;
-  }
+    html, body { width:100vw; height:100vh; } /* just to be sure these are full screen*/
     
-  100% {
-    width:100%;
-  }
-}
-
+    canvas { 
+       overflow: hidden;
+       width:100vw;
+       height:100vh;
+       background-color:black;
+    }
     </style> 
      
-    <div class="gauge-chart">
-    <svg viewBox="0 0 80 40" class="gauge">
-      <circle class="donut-ring" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#d2d3d4" stroke-width="15"></circle>
-      <circle class="donut-segment" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#b3ffab" stroke-width="15" stroke-dasharray="65 135" stroke-dashoffset="-100">
-        <animate attributeType='XML' attributeName='stroke-dasharray' values='0 200; 20 180 ; 50 150; 65 135; 65 135;' keyTimes='0; 0.4; 0.6; 0.7; 1' dur='2.5s' repeatCount='1'>
-      </circle>
-      <text x="40" y="39.5" class="gauge-text">65%</text>
-    </svg>
-    <p>super gauge chart 2</p>
-  </div>
-
-
-  <div class="center">
-<div class="container">
-  <a class="link">Hover over me (Horizontal effect)</a>
- </div>
-</div>
-  
+    <canvas id="test"></canvas>
 	`;
+
+  var w = window.innerWidth,
+    h = window.innerHeight,
+    canvas = document.getElementById("test"),
+    ctx = canvas.getContext("2d"),
+    rate = 60,
+    arc = 100,
+    time,
+    count,
+    size = 7,
+    speed = 20,
+    parts = new Array(),
+    colors = ["red", "#f57900", "yellow", "#ce5c00", "#5c3566"];
+  var mouse = { x: 0, y: 0 };
+
+  canvas.setAttribute("width", w);
+  canvas.setAttribute("height", h);
+
+  function create() {
+    time = 0;
+    count = 0;
+
+    for (var i = 0; i < arc; i++) {
+      parts[i] = {
+        x: Math.ceil(Math.random() * w),
+        y: Math.ceil(Math.random() * h),
+        toX: Math.random() * 5 - 1,
+        toY: Math.random() * 2 - 1,
+        c: colors[Math.floor(Math.random() * colors.length)],
+        size: Math.random() * size
+      };
+    }
+  }
+
+  function particles() {
+    ctx.clearRect(0, 0, w, h);
+    canvas.addEventListener("mousemove", MouseMove, false);
+    for (var i = 0; i < arc; i++) {
+      var li = parts[i];
+      var distanceFactor = DistanceBetween(mouse, parts[i]);
+      var distanceFactor = Math.max(Math.min(15 - distanceFactor / 10, 10), 1);
+      ctx.beginPath();
+      ctx.arc(li.x, li.y, li.size * distanceFactor, 0, Math.PI * 2, false);
+      ctx.fillStyle = li.c;
+      ctx.strokeStyle = li.c;
+      if (i % 2 == 0) ctx.stroke();
+      else ctx.fill();
+
+      li.x = li.x + li.toX * (time * 0.05);
+      li.y = li.y + li.toY * (time * 0.05);
+
+      if (li.x > w) {
+        li.x = 0;
+      }
+      if (li.y > h) {
+        li.y = 0;
+      }
+      if (li.x < 0) {
+        li.x = w;
+      }
+      if (li.y < 0) {
+        li.y = h;
+      }
+    }
+    if (time < speed) {
+      time++;
+    }
+    setTimeout(particles, 1000 / rate);
+  }
+  function MouseMove(e) {
+    mouse.x = e.layerX;
+    mouse.y = e.layerY;
+
+    //context.fillRect(e.layerX, e.layerY, 5, 5);
+    //Draw( e.layerX, e.layerY );
+  }
+  function DistanceBetween(p1, p2) {
+    var dx = p2.x - p1.x;
+    var dy = p2.y - p1.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+  create();
+  particles();
 
   class Box extends HTMLElement {
     constructor() {
