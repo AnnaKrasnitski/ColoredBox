@@ -81,13 +81,10 @@
   </div>
 </div>
 
-<script
-  src="https://code.jquery.com/jquery-2.2.4.js"
-  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-  crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
+<script>
   
-
-
   $(function() {
 
     var polar_to_cartesian, svg_circle_arc_path, animate_arc;
