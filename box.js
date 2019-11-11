@@ -45,17 +45,7 @@ p {
     </svg>
     <p>super gauge chart 2</p>
   </div>
-  <div class="gauge-chart">
-    <svg viewBox="0 0 80 40" class="gauge">
-      <circle class="donut-ring" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#d2d3d4" stroke-width="15"></circle>
-      <circle class="donut-segment" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#b3ffab" stroke-width="15" stroke-dasharray="85 115" stroke-dashoffset="-100">
-        <animate attributeType='XML' attributeName='stroke-dashoffset' values='0; 0; -33; -100; -100;' keyTimes='0; 0.4; 0.6; 0.7; 1' dur='2.5s' repeatCount='1'>
-      </circle>
-      <text x="40" y="39.5" class="gauge-text">85%</text>
-    </svg>
-    <p>super gauge chart</p>
-  </div>
-
+  
 	`;
 
   class Box extends HTMLElement {
