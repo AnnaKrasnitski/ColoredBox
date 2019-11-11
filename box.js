@@ -56,8 +56,6 @@ p {
       this.addEventListener("click", event => {
         var event = new Event("onClick");
         this.dispatchEvent(event);
-        var x = document.getElementsByClassName("gauge-text");
-        x[0].innerHTML = "Hello World!";
       });
       this._props = {};
     }
@@ -69,6 +67,11 @@ p {
     onCustomWidgetAfterUpdate(changedProperties) {
       if ("color" in changedProperties) {
         this.style["background-color"] = changedProperties["color"];
+      }
+      if ("value" in changedProperties) {
+        var x = document.getElementsByClassName("gauge-text");
+        x[0].innerHTML = "Hello World!";
+        x[0].innerHTML = changedProperties["value"];
       }
       if ("opacity" in changedProperties) {
         this.style["opacity"] = changedProperties["opacity"];
