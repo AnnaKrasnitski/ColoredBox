@@ -4,56 +4,102 @@
 		<style>
 	
     @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:100,400");
-    .large-header {
-      position: relative;
-      width: 100%;
-      background: #111;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center center;
-      z-index: 1;
-   }
-   
-   .demo .large-header {
-      background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
-   }
-   
-   .main-title {
-      position: absolute;
-      margin: 0;
-      padding: 0;
-      color: #F9F1E9;
-      text-align: center;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate3d(-50%, -50%, 0);
-      transform: translate3d(-50%, -50%, 0);
-   }
-   
-   .demo .main-title {
-      text-transform: uppercase;
-      font-size: 4.2em;
-      letter-spacing: 0.1em;
-   }
-   
-   .main-title .thin {
-      font-weight: 200;
-   }
-   
-   @media only screen and (max-width: 768px) {
-      .demo .main-title {
-         font-size: 3em;
-      }
-   }
+$background-color: #0f2027;
+$accent-color: #b3ffab;
+.gauge {
+	&-chart {
+		width: 20rem;
+	}
+	&-text {
+		text-anchor: middle;
+		fill: $accent-color;
+		font-weight: 400;
+		font-size: 75%;
+	}
+}
+
+html {
+	font-size: 1.5rem;
+}
+body {
+	background: $background-color;
+	color: $accent-color;
+	font-family: "Josefin Sans", sans-serif;
+	font-weight: 100;
+	display: flex;
+	align-items: center;
+}
+p {
+	text-align: center;
+}
+
+
+
+
+$hover-bg: #7500D8;
+
+.center {
+  text-align:center;
+  padding: 100px;
+}
+
+body {
+  background-color: #eb484d;
+  color: #FFF;
+  font-size: 35px;
+  font-family: sans-serif;
+}
+
+.container {
+  position:relative;
+  display:inline-block;
+  padding: 10px;
+  
+  &:before {
+    position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height:100%;
+  background: $hover-bg;
+  z-index: -1;
+  content: '';
+  }
+  
+  &:hover::before {
+    animation: bg-animation 0.6s 1;
+  animation-fill-mode: forwards;
+  }
+}
+
+@keyframes bg-animation {
+  0% {
+    width: 10%;
+  }
+    
+  100% {
+    width:100%;
+  }
+}
+
     </style> 
      
-    <div class="container demo">
-   <div class="content">
-      <div id="large-header" class="large-header">
-         <canvas id="demo-canvas"></canvas>
-         <h1 class="main-title"><span class="thin">Explore</span> Space</h1>
-      </div>
-   </div>
+    <div class="gauge-chart">
+    <svg viewBox="0 0 80 40" class="gauge">
+      <circle class="donut-ring" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#d2d3d4" stroke-width="15"></circle>
+      <circle class="donut-segment" cx="40" cy="40" r="31.8309886184" fill="transparent" stroke="#b3ffab" stroke-width="15" stroke-dasharray="65 135" stroke-dashoffset="-100">
+        <animate attributeType='XML' attributeName='stroke-dasharray' values='0 200; 20 180 ; 50 150; 65 135; 65 135;' keyTimes='0; 0.4; 0.6; 0.7; 1' dur='2.5s' repeatCount='1'>
+      </circle>
+      <text x="40" y="39.5" class="gauge-text">65%</text>
+    </svg>
+    <p>super gauge chart 2</p>
+  </div>
+
+
+  <div class="center">
+<div class="container">
+  <a class="link">Hover over me (Horizontal effect)</a>
+ </div>
 </div>
   
 	`;
