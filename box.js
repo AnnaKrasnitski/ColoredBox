@@ -56,12 +56,11 @@ p {
       this.addEventListener("click", event => {
         var event = new Event("onClick");
         this.dispatchEvent(event);
-        document.setElementsByClassName("gauge-text") = "55" ;
+        var x = document.getElementsByClassName("gauge-text");
+        x[0].innerHTML = "Hello World!";
       });
       this._props = {};
     }
-
-    
 
     onCustomWidgetBeforeUpdate(changedProperties) {
       this._props = { ...this._props, ...changedProperties };
@@ -78,7 +77,4 @@ p {
   }
 
   customElements.define("com-sample-box", Box);
-
- 
-   
 })();
