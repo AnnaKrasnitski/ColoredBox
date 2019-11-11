@@ -33,6 +33,55 @@ p {
 	text-align: center;
 }
 
+
+
+
+$hover-bg: #7500D8;
+
+.center {
+  text-align:center;
+  padding: 100px;
+}
+
+body {
+  background-color: #eb484d;
+  color: #FFF;
+  font-size: 35px;
+  font-family: sans-serif;
+}
+
+.container {
+  position:relative;
+  display:inline-block;
+  padding: 10px;
+  
+  &:before {
+    position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height:100%;
+  background: $hover-bg;
+  z-index: -1;
+  content: '';
+  }
+  
+  &:hover::before {
+    animation: bg-animation 0.6s 1;
+  animation-fill-mode: forwards;
+  }
+}
+
+@keyframes bg-animation {
+  0% {
+    width: 10%;
+  }
+    
+  100% {
+    width:100%;
+  }
+}
+
     </style> 
      
     <div class="gauge-chart">
@@ -45,6 +94,13 @@ p {
     </svg>
     <p>super gauge chart 2</p>
   </div>
+
+
+  <div class="center">
+<div class="container">
+  <a class="link">Hover over me (Horizontal effect)</a>
+ </div>
+</div>
   
 	`;
 
