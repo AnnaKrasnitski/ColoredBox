@@ -51,6 +51,8 @@
     get opacity() {
       return this._shadowRoot.getElementById("bps_opacity").value;
     }
+
+    
   }
 
   customElements.define("com-sample-box-Bps", BoxBps);

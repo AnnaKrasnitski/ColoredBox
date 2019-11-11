@@ -37,6 +37,11 @@
 			"description": "Background color",
 			"default": "'white'"
 		},
+		"value": {
+			"type": "string",
+			"description": "value",
+			"default": "'44'"
+		},
 		"opacity": {
 			"type": "number",
 			"description": "Opacity",
@@ -67,7 +72,28 @@
 			"returnType": "string",
 			"description": "Returns the background color.",
 			"body": "return this.color;"
+		},
+
+
+		"setValue": {
+			"description": "Sets the background color.",
+			"parameters": [
+				{
+					"name": "newValue",
+					"type": "string",
+					"description": "The new value"
+				}
+			],
+			"body": "this.value = newValue;"
+		},
+		"getValue": {
+			"returnType": "string",
+			"description": "Returns tvalue.",
+			"body": "return this.value;"
 		}
+
+		
+
 	},
 	"events": {
 		"onClick": {

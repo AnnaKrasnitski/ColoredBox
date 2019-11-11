@@ -8,6 +8,10 @@
 					<tr>
 						<td>Color</td>
 						<td><input id="sps_color" type="text" size="40" maxlength="40"></td>
+          </tr>
+          <tr>
+						<td>Value</td>
+						<td><input id="sps_value" type="text" size="40" maxlength="40"></td>
 					</tr>
 				</table>
 				<input type="submit" style="display:none;">
@@ -44,6 +48,13 @@
 
     get color() {
       return this._shadowRoot.getElementById("sps_color").value;
+    }
+    set vale(newVale) {
+      this._shadowRoot.getElementById("sps_value").value = newVale;
+    }
+
+    get vale() {
+      return this._shadowRoot.getElementById("sps_value").value;
     }
   }
 
