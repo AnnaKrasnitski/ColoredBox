@@ -33,8 +33,6 @@ p {
 	text-align: center;
 }
 
-
-
     </style> 
      
     <div class="gauge-chart">
