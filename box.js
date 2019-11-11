@@ -68,10 +68,7 @@ p {
       if ("color" in changedProperties) {
         this.style["background-color"] = changedProperties["color"];
       }
-      if ("value" in changedProperties) {
-        var x = document.getElementsByClassName("gauge-text");
-        x[0].innerHTML = changedProperties["value"];
-      }
+
       if ("opacity" in changedProperties) {
         this.style["opacity"] = changedProperties["opacity"];
       }
