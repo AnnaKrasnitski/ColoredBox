@@ -58,8 +58,6 @@ p {
         this.dispatchEvent(event);
       });
       this._props = {};
-      var x = document.getElementsByClassName("gauge-text");
-      x[0].innerHTML = "666";
     }
 
     onCustomWidgetBeforeUpdate(changedProperties) {
@@ -67,6 +65,8 @@ p {
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
+      var x = document.getElementsByClassName("gauge-text");
+      x[0].innerHTML = "666";
       if ("color" in changedProperties) {
         this.style["background-color"] = changedProperties["color"];
       }
