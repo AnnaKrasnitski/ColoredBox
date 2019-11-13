@@ -2,73 +2,112 @@
   let template = document.createElement("template");
   template.innerHTML = `
 		<style>
-    @import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
-
+    html,body {
+      height:100%;
+      min-height:100%;
+    }
+    
     body {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      justify-content: center;
-      align-items: center;
-      background-image: linear-gradient(
-          rgba(16, 16, 16, 0.8),
-          rgba(16, 16, 16, 0.8)
-        ),
-        url(https://i.loli.net/2019/11/03/RtVq2wxQYySDb8L.jpg);
-      background-size: cover;
+      background-image:linear-gradient(transparent,transparent 350px,rgba(white,.9) 350px,rgba(black,.8)), url(https://res.cloudinary.com/inventorylab/image/upload/v1571081885/stars_dzyjfk.jpg);
+      background-position:0 0;
+      background-size:2000px auto;
+      animation:backgroundCrawl 50s linear infinite;
     }
     
-    p {
-      margin: 0em 5em 4em 5em;
+    .earth {
+      width:125px;
+      height:125px;
+      margin:250px auto 0 auto;
+      border-radius:100%;
+      background: url(https://lh5.googleusercontent.com/-kkxEx-SkRaY/VBLF4BV2lZI/AAAAAAAAKao/FnKsv7402_c/s0/earthmap.jpg) 0 0 repeat;
+      background-size:cover;
+      position:relative;
+      animation:earthBounce .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) alternate infinite, slowSpin 6s linear infinite, earthRotate 12s linear infinite;
+      z-index:1;
     }
     
-    .glowIn {
-      text-align: left;
-      line-height: 1.8;
-      color: white;
-      font-family: Lora, serif;
+    .earth-shadow {
+      width:125px;
+      height:125px;
+      margin:250px auto 0 auto;
+      border-radius:100%;
+      box-shadow:0 0 60px 0 rgba(#0085ff,.6);
+      background-image:linear-gradient( transparent,rgba(black,.9)), radial-gradient(circle at top, transparent 0, rgba(white,.09) 90px, transparent 90px, transparent);
+      position:absolute;
+      animation:earthBounce .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) alternate infinite;
+      left:50%;
+      margin-left:-62.5px;
+      z-index:1;
+    }
     
-      span {
-        animation: glowIn 0.8s ease both;
+    .ground-shadow {
+      margin:-10px auto 0;
+      width:100px;
+      height:20px;
+      background:rgba(0,0,0,.1);
+      border-radius:100%;
+      animation: shadow .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite alternate;
+      position:relative;
+      z-index:0;
+    }
+    
+    @keyframes earthBounce {
+      0% {
+        top:0;
+      }
+      100% {
+        top:-200px;
       }
     }
     
-    @keyframes glowIn {
-      from {
-        opacity: 0;
+    @keyframes shadow {
+    0% {
+      transform: scale(.5);
+      background-color:rgba(0,0,0,.2);
       }
-      65% {
-        opacity: 1;
-        text-shadow: 0 0 25px white;
-      }
-      75% {
-        opacity: 1;
-      }
-      to {
-        opacity: 0.7;
+    100% {
+      transform: scale(1.1);
+      background-color:rgba(0,0,0,.05);
       }
     }
     
+    @keyframes slowSpin {
+      0% {
+        transform:rotate(0);
+      }
+      100% {
+        transform:rotate(360deg);
+      }
+    }
+    
+    @keyframes backgroundCrawl {
+      0% {
+        background-position:0 0;
+      }
+      100%{
+        background-position:-2000px 0;
+      }
+    }
+    
+    @keyframes earthRotate {
+      0% {
+        background-position:0 0;
+      }
+      100%{
+        background-position:-500px 0;
+      }
+    }
     </style> 
-     
-    <h1 class="glowIn">Hello World</h1>
-<p class="glowIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. A lacus vestibulum sed arcu.</p>
-
-<script>
+    <div class="earth"></div>
+    <div class="earth-shadow"></div>
+    <div class="ground-shadow"></div>
+   
   
-let glowInTexts = document.querySelectorAll(".glowIn");
-glowInTexts.forEach(glowInText => {
-  let letters = glowInText.textContent.split("");
-  glowInText.textContent = "";
-  letters.forEach((letter, i) => {
-    let span = document.createElement("span");
-    span.textContent = letter;
-    span.style.animationDelay = '${i * 0.05}s';
-    glowInText.append(span);
-  });
-});
+<script>
+</script>
 
-  </script>
+ 
+
   
 	`;
 
