@@ -54,8 +54,6 @@
     <h1 class="glowIn">Hello World</h1>
 <p class="glowIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. A lacus vestibulum sed arcu.</p>
 
-<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
 <script>
   
 let glowInTexts = document.querySelectorAll(".glowIn");
